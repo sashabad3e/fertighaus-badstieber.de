@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Datenschutzerklärung – WOLF-Haus Bayreuth · Thomas Badstieber</title>
+  <meta name="robots" content="noindex, follow" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --gold:    #FFC200;
+      --gold-dk: #D9A400;
+      --dark:    #1A1A18;
+      --black:   #111111;
+    }
+    *{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{
+      font-family:'Plus Jakarta Sans',sans-serif;
+      color:#E8E8E6;
+      background:var(--black);
+      -webkit-font-smoothing:antialiased;
+      line-height:1.7;
+      min-height:100vh;
+      opacity:0;
+      transition:opacity 0.2s ease;
+    }
+    .grain-overlay{
+      position:fixed;inset:0;pointer-events:none;z-index:0;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      background-size:180px 180px;opacity:0.4;mix-blend-mode:overlay;
+    }
+    .page-wrap{
+      position:relative;z-index:1;
+      max-width:720px;
+      margin:0 auto;
+      padding:60px 32px 100px;
+    }
+    /* ── Logo bar ── */
+    .logo-bar{
+      display:flex;align-items:center;gap:14px;
+      margin-bottom:48px;
+    }
+    .logo-bar a{display:flex;align-items:center;}
+    .logo-bar img{
+      height:34px;width:auto;
+      border-radius:5px;padding:3px 8px;
+      background:#FFFFFF;
+      flex-shrink:0;
+    }
+    .logo-bar span{
+      font-size:14px;font-weight:600;
+      color:rgba(255,255,255,.3);
+      letter-spacing:.01em;
+    }
+    /* ── Back button ── */
+    .back-btn{
+      display:flex;align-items:center;gap:8px;
+      width:fit-content;
+      font-size:13px;font-weight:700;color:rgba(255,255,255,.45);
+      text-decoration:none;letter-spacing:.02em;
+      padding:9px 16px;border-radius:6px;
+      border:1.5px solid rgba(255,255,255,.1);
+      margin-bottom:44px;
+      transition:color .2s,border-color .2s,background .2s;
+    }
+    .back-btn:hover{color:var(--gold);border-color:var(--gold);background:rgba(255,194,0,.06);}
+    /* ── Eyebrow ── */
+    .page-eyebrow{
+      display:flex;align-items:center;gap:10px;
+      font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
+      color:var(--gold-dk);margin-bottom:14px;
+    }
+    .page-eyebrow::before{content:'';width:22px;height:2px;background:var(--gold);flex-shrink:0;}
+    /* ── Title ── */
+    h1.page-title{
+      font-family:'Plus Jakarta Sans',sans-serif;
+      font-size:clamp(28px,5vw,48px);
+      font-weight:800;
+      letter-spacing:-0.03em;
+      line-height:1.05;
+      color:#FFFFFF;
+      margin-bottom:12px;
+    }
+    .page-subtitle{
+      font-size:15px;color:rgba(255,255,255,.35);
+      margin-bottom:52px;
+      padding-bottom:36px;
+      border-bottom:1px solid rgba(255,255,255,.07);
+    }
+    /* ── Placeholder card ── */
+    .placeholder-card{
+      background:rgba(255,194,0,.06);
+      border:1.5px solid rgba(255,194,0,.18);
+      border-radius:16px;
+      padding:52px 40px;
+      text-align:center;
+    }
+    .placeholder-icon{
+      width:64px;height:64px;
+      background:rgba(255,194,0,.12);border-radius:50%;
+      display:flex;align-items:center;justify-content:center;
+      margin:0 auto 24px;
+    }
+    .status-pill{
+      display:inline-flex;align-items:center;gap:8px;
+      background:rgba(255,194,0,.1);border:1px solid rgba(255,194,0,.22);
+      color:var(--gold);
+      font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+      padding:7px 16px;border-radius:4px;margin-bottom:28px;
+    }
+    .status-dot{width:6px;height:6px;background:var(--gold);border-radius:50%;animation:pulse 2s infinite;}
+    @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
+    .placeholder-card h2{
+      font-family:'Plus Jakarta Sans',sans-serif;
+      font-size:22px;font-weight:800;
+      letter-spacing:-.02em;
+      color:#FFFFFF;
+      margin-bottom:14px;
+    }
+    .placeholder-card p{
+      font-size:15px;color:rgba(255,255,255,.45);
+      line-height:1.75;max-width:440px;margin:0 auto;
+    }
+    .contact-hint{
+      margin-top:32px;
+      display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;
+      font-size:13px;color:rgba(255,255,255,.3);
+    }
+    .contact-hint a{color:var(--gold);text-decoration:underline;font-weight:700;}
+    .contact-hint a:hover{color:var(--gold-dk);}
+    /* ── Footer ── */
+    .foot-legal{
+      margin-top:64px;padding-top:28px;
+      border-top:1px solid rgba(255,255,255,.06);
+      display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;
+    }
+    .foot-legal a{font-size:12px;color:rgba(255,255,255,.25);text-decoration:none;transition:color .2s;}
+    .foot-legal a:hover{color:var(--gold);}
+    .foot-legal span{font-size:12px;color:rgba(255,255,255,.18);}
+    @media(max-width:640px){
+      .page-wrap{padding:40px 20px 72px;}
+      .placeholder-card{padding:32px 20px;}
+    }
+  </style>
+</head>
+<body>
+<div class="grain-overlay"></div>
+
+<div class="page-wrap">
+
+  <!-- Logo bar -->
+  <div class="logo-bar">
+    <a href="index.html">
+      <img src="website_assets/Wolf.jpg" alt="WOLF-Haus Logo" />
+    </a>
+    <span>Thomas Badstieber</span>
+  </div>
+
+  <!-- Back button -->
+  <a href="index.html" class="back-btn">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+    Zurück zur Startseite
+  </a>
+
+  <!-- Heading block -->
+  <span class="page-eyebrow">Rechtliche Angaben</span>
+  <h1 class="page-title">Datenschutzerklärung</h1>
+  <p class="page-subtitle">Informationen zum Datenschutz auf dieser Website</p>
+
+  <!-- Placeholder content -->
+  <div class="placeholder-card">
+    <div class="status-pill">
+      <div class="status-dot"></div>
+      In Bearbeitung
+    </div>
+    <div class="placeholder-icon">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FFC200" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    </div>
+    <h2>Datenschutzerklärung</h2>
+    <p>Die vollständige Datenschutzerklärung wird derzeit erstellt und zeitnah ergänzt.</p>
+    <div class="contact-hint">
+      Bei Fragen zum Datenschutz:
+      <a href="mailto:thomas.badstieber@wolfsystem.de">thomas.badstieber@wolfsystem.de</a>
+    </div>
+  </div>
+
+  <!-- Page footer -->
+  <div class="foot-legal">
+    <span>© 2025 Thomas Badstieber – WOLF-Haus Fachberater</span>
+    <div style="display:flex;gap:20px;">
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+      <a href="index.html#kontakt">Kontakt</a>
+      <a href="index.html">Startseite</a>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  /* Page transition — fade in only, navigate immediately */
+  window.addEventListener('pageshow', function () { document.body.style.opacity = '1'; });
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a[href]');
+    if (!a) return;
+    var href = a.getAttribute('href');
+    if (!href || /^(https?:|mailto:|tel:)/.test(href)) return;
+    if (href.indexOf('.html') > -1) {
+      e.preventDefault();
+      window.location.href = href;
+    }
+  });
+</script>
+</body>
+</html>
