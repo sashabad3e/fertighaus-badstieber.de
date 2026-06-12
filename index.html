@@ -1349,12 +1349,12 @@
       background:var(--dark);
       border-top:1px solid rgba(255,255,255,.07);
       padding:20px 40px;
-      display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
+      display:none;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
       box-shadow:0 -4px 40px rgba(0,0,0,.28);
       transform:translateY(110%);
       transition:transform .45s cubic-bezier(.22,1,.36,1);
     }
-    .cookie-banner.visible{transform:translateY(0);}
+    .cookie-banner.visible{display:flex;transform:translateY(0);}
     .cookie-text{font-size:13px;color:rgba(255,255,255,.55);line-height:1.65;flex:1;min-width:220px;}
     .cookie-text a{color:var(--gold);text-decoration:underline;}
     .cookie-text a:hover{color:var(--gold-dk);}
@@ -2764,7 +2764,7 @@
           </li>
           <li class="bene-item">
             <div class="bene-num">03</div>
-            <div class="bene-text"><strong>Persönliche Beratung vor Ort</strong><span>Ich bin Ihr direkter Ansprechpartner in Bayreuth – kein Callcenter, keine langen Wartezeiten.</span></div>
+            <div class="bene-text"><strong>Persönliche Beratung vor Ort</strong><span>Ich bin Ihr direkter Ansprechpartner – persönlich erreichbar und mit individueller Begleitung durch den gesamten Beratungsprozess.</span></div>
           </li>
           <li class="bene-item">
             <div class="bene-num">04</div>
@@ -3052,7 +3052,7 @@
     <div style="width:100%;height:2px;background:linear-gradient(to right,var(--gold),rgba(255,194,0,.1));border-radius:1px;margin-bottom:28px;"></div>
   </div>
   <div class="foot-bottom">
-    <span>© 2025 Thomas Badstieber – WOLF-Haus Fachberater Bayreuth &amp; Oberfranken</span>
+    <span>© 2026 Thomas Badstieber – WOLF-Haus Fachberater Bayreuth &amp; Oberfranken</span>
     <div class="foot-bottom-links">
       <a href="impressum.html">Impressum</a>
       <a href="datenschutz.html">Datenschutz</a>
@@ -3143,11 +3143,18 @@
   (function() {
     var banner = document.getElementById('cookieBanner');
     if (!banner) return;
-    if (!localStorage.getItem('cookieConsent')) {
-      setTimeout(function() { banner.classList.add('visible'); }, 700);
-    }
+    // Already decided — keep hidden (display:none is the CSS default)
+    if (localStorage.getItem('cookieConsent')) return;
+    // Animate in: unmask first so transition has a start state
+    setTimeout(function() {
+      banner.style.display = 'flex';
+      void banner.offsetWidth; // force reflow so transition fires
+      banner.classList.add('visible');
+    }, 700);
     function dismissBanner(val) {
       localStorage.setItem('cookieConsent', val);
+      // Immediately hide via inline style — overrides all CSS, works on all mobile browsers
+      banner.style.display = 'none';
       banner.classList.remove('visible');
     }
     document.getElementById('cookieAccept').addEventListener('click', function() { dismissBanner('accepted'); });
