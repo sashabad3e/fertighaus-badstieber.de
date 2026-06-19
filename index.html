@@ -3183,17 +3183,19 @@
 
   // ─── REVIEWS CAROUSEL (rAF scroll, desktop + mobile) ───
   (function() {
-    var track = document.getElementById('reviewsTrack');
-    if (!track) return;
+    var track    = document.getElementById('reviewsTrack');
+    var carousel = track && track.closest('.reviews-carousel');
+    if (!track || !carousel) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-    var SPEED = 0.6; /* px per frame at ~60 fps */
-    var pos   = 0;
-    var half  = 0;
+    var SPEED  = 0.7; /* px per frame at ~60 fps */
+    var pos    = 0;
+    var half   = 0;
     var paused = false;
 
     function init() {
       half = track.scrollWidth / 2;
+      if (half <= 0) return; /* guard: layout not ready */
       requestAnimationFrame(tick);
     }
 
@@ -3206,16 +3208,13 @@
       requestAnimationFrame(tick);
     }
 
-    /* pause on hover (desktop) */
-    track.addEventListener('mouseenter', function() { paused = true; });
-    track.addEventListener('mouseleave', function() { paused = false; });
-
-    /* pause on touch (mobile) */
-    track.addEventListener('touchstart', function() { paused = true; }, { passive: true });
-    track.addEventListener('touchend',   function() {
+    /* pause on touch only — no hover pause on desktop so it always runs */
+    carousel.addEventListener('touchstart', function() { paused = true; }, { passive: true });
+    carousel.addEventListener('touchend',   function() {
       setTimeout(function() { paused = false; }, 800);
     });
 
+    /* init after full page load so scrollWidth is accurate */
     if (document.readyState === 'complete') { init(); }
     else { window.addEventListener('load', init); }
   })();
