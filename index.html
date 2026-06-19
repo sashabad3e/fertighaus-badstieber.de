@@ -1218,10 +1218,6 @@
     .google-rating-stars{display:flex;gap:2px;margin-bottom:5px;}
     .google-rating-star{color:var(--gold);font-size:15px;}
     .google-rating-label{font-size:12px;color:var(--muted);font-weight:500;}
-    @keyframes marquee{
-      from{transform:translateX(0);}
-      to{transform:translateX(-50%);}
-    }
     .reviews-carousel{
       overflow:hidden;position:relative;
       margin-bottom:44px;
@@ -1241,9 +1237,8 @@
     .reviews-track{
       display:flex;gap:20px;
       width:max-content;
-      animation:marquee 58s linear infinite;
+      will-change:transform;
     }
-    .reviews-track:hover{animation-play-state:paused;}
     .review-card{
       background:var(--offwhite);border-radius:14px;padding:32px;
       border:1px solid rgba(17,17,17,.06);
@@ -1314,7 +1309,6 @@
       .ai-img-grid{grid-template-columns:1fr 1fr;}
       .ai-img-item img{height:150px;}
       .review-card{width:280px;}
-      .reviews-track{animation-duration:44s;}
       .reviews-carousel::before,.reviews-carousel::after{width:40px;}
     }
     @media(max-width:480px){
@@ -1395,7 +1389,6 @@
     @media(prefers-reduced-motion:reduce){
       .reveal{transition:none;}
       .einblicke-track{animation:none!important;}
-      .reviews-track{animation:none!important;}
       *{transition-duration:.01ms!important;animation-duration:.01ms!important;}
     }
 
@@ -3188,16 +3181,44 @@
     });
   }
 
-  // ─── CAROUSEL TOUCH PAUSE ───
-  const reviewsTrack = document.getElementById('reviewsTrack');
-  if (reviewsTrack) {
-    reviewsTrack.addEventListener('touchstart', () => {
-      reviewsTrack.style.animationPlayState = 'paused';
-    }, { passive: true });
-    reviewsTrack.addEventListener('touchend', () => {
-      reviewsTrack.style.animationPlayState = 'running';
-    }, { passive: true });
-  }
+  // ─── REVIEWS CAROUSEL (rAF scroll, desktop + mobile) ───
+  (function() {
+    var track = document.getElementById('reviewsTrack');
+    if (!track) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var SPEED = 0.6; /* px per frame at ~60 fps */
+    var pos   = 0;
+    var half  = 0;
+    var paused = false;
+
+    function init() {
+      half = track.scrollWidth / 2;
+      requestAnimationFrame(tick);
+    }
+
+    function tick() {
+      if (!paused) {
+        pos -= SPEED;
+        if (pos <= -half) pos += half;
+        track.style.transform = 'translateX(' + pos + 'px)';
+      }
+      requestAnimationFrame(tick);
+    }
+
+    /* pause on hover (desktop) */
+    track.addEventListener('mouseenter', function() { paused = true; });
+    track.addEventListener('mouseleave', function() { paused = false; });
+
+    /* pause on touch (mobile) */
+    track.addEventListener('touchstart', function() { paused = true; }, { passive: true });
+    track.addEventListener('touchend',   function() {
+      setTimeout(function() { paused = false; }, 800);
+    });
+
+    if (document.readyState === 'complete') { init(); }
+    else { window.addEventListener('load', init); }
+  })();
 
   // ─── FAQ ACCORDION ───
   (function() {
