@@ -1389,7 +1389,6 @@
     @media(prefers-reduced-motion:reduce){
       .reveal{transition:none;}
       .einblicke-track{animation:none!important;}
-      *{transition-duration:.01ms!important;animation-duration:.01ms!important;}
     }
 
     /* ─── AI GALLERY NOTE ─── */
@@ -3183,7 +3182,6 @@
     var track    = document.getElementById('reviewsTrack');
     var carousel = track && track.closest('.reviews-carousel');
     if (!track || !carousel) return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
     var SPEED  = 0.7; /* px per frame at ~60 fps */
     var pos    = 0;
