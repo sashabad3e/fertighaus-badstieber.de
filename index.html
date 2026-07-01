@@ -15,8 +15,8 @@
   <meta property="og:description" content="Ihr persönlicher WOLF-Haus Fachberater aus Bindlach bei Bayreuth. Persönliche Beratung von der ersten Idee bis zur Schlüsselübergabe. Kostenlos und unverbindlich." />
   <meta property="og:image" content="https://fertighaus-badstieber.de/website_assets/Vadder gute qualität.jpg" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <script async src="https://tally.so/widgets/embed.js"></script>
-  <!-- Google Fonts werden erst nach Einwilligung geladen (Consent-Gate) -->
+  <link rel="preconnect" href="https://fonts.bunny.net" />
+  <link href="https://fonts.bunny.net/css?family=dm-serif-display:400,400i|plus-jakarta-sans:300,400,500,600,700,800&display=swap" rel="stylesheet" />
 
   <style>
     :root {
@@ -1343,48 +1343,6 @@
     }
     .lightbox-close:hover{background:rgba(255,255,255,.24);transform:scale(1.08);}
     .ai-img-item{cursor:pointer;}
-    /* ─── COOKIE BANNER ─── */
-    .cookie-banner{
-      position:fixed;bottom:0;left:0;right:0;z-index:9998;
-      background:var(--dark);
-      border-top:1px solid rgba(255,255,255,.07);
-      padding:20px 40px;
-      display:none;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
-      box-shadow:0 -4px 40px rgba(0,0,0,.28);
-      transform:translateY(110%);
-      transition:transform .45s cubic-bezier(.22,1,.36,1);
-    }
-    .cookie-banner.visible{display:flex;transform:translateY(0);}
-    .cookie-text{font-size:13px;color:rgba(255,255,255,.55);line-height:1.65;flex:1;min-width:220px;}
-    .cookie-text a{color:var(--gold);text-decoration:underline;}
-    .cookie-text a:hover{color:var(--gold-dk);}
-    .cookie-actions{display:flex;align-items:center;gap:10px;flex-shrink:0;flex-wrap:wrap;}
-    .cookie-btn-accept{
-      background:var(--gold);color:var(--black);
-      font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:13px;
-      padding:10px 22px;border-radius:6px;border:none;cursor:pointer;white-space:nowrap;
-      transition:background .2s,transform .15s;
-    }
-    .cookie-btn-accept:hover{background:var(--gold-dk);transform:translateY(-1px);}
-    .cookie-btn-decline{
-      background:transparent;color:rgba(255,255,255,.5);
-      font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:13px;
-      padding:10px 16px;border-radius:6px;border:1.5px solid rgba(255,255,255,.14);cursor:pointer;white-space:nowrap;
-      transition:border-color .2s,color .2s,transform .15s;
-    }
-    .cookie-btn-decline:hover{border-color:rgba(255,255,255,.35);color:rgba(255,255,255,.8);transform:translateY(-1px);}
-    .cookie-btn-link{
-      background:none;border:none;cursor:pointer;padding:4px 6px;
-      font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;font-weight:500;
-      color:rgba(255,255,255,.35);text-decoration:underline;white-space:nowrap;
-      transition:color .2s;
-    }
-    .cookie-btn-link:hover{color:var(--gold);}
-    @media(max-width:768px){
-      .cookie-banner{padding:18px 20px;flex-direction:column;align-items:flex-start;gap:14px;}
-      .cookie-actions{width:100%;}
-    }
-
     /* ─── REDUCED MOTION ─── */
     @media(prefers-reduced-motion:reduce){
       .reveal{transition:none;}
@@ -3026,22 +2984,10 @@
       <a href="impressum.html">Impressum</a>
       <a href="datenschutz.html">Datenschutz</a>
       <a href="#kontakt">Kontakt</a>
-      <button id="cookieSettingsBtn" style="background:none;border:none;cursor:pointer;font-size:12px;color:rgba(255,255,255,.24);font-family:inherit;padding:0;transition:color .2s;" onmouseover="this.style.color='#FFC200'" onmouseout="this.style.color='rgba(255,255,255,.24)'">Cookie-Einstellungen</button>
     </div>
   </div>
 </footer>
 
-<!-- COOKIE BANNER -->
-<div class="cookie-banner" id="cookieBanner" role="region" aria-label="Cookie-Einwilligung">
-  <p class="cookie-text">
-    Diese Website verwendet notwendige Cookies und ähnliche Technologien, um die Funktionalität der Website sicherzustellen. Weitere Informationen finden Sie in der
-    <a href="datenschutz.html">Datenschutzerklärung</a>.
-  </p>
-  <div class="cookie-actions">
-    <button class="cookie-btn-accept" id="cookieAccept">Akzeptieren</button>
-    <button class="cookie-btn-decline" id="cookieDecline">Ablehnen</button>
-  </div>
-</div>
 
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Bildvorschau">
@@ -3128,54 +3074,37 @@
   lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 
-  // ─── GOOGLE FONTS CONSENT-GATE ───
-  function loadGoogleFonts() {
-    if (document.getElementById('gfonts-link')) return;
-    var link = document.createElement('link');
-    link.id   = 'gfonts-link';
-    link.rel  = 'stylesheet';
-    link.href = 'https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap';
-    document.head.appendChild(link);
-  }
-  // If user already accepted in a previous visit, load fonts immediately
-  if (localStorage.getItem('cookieConsent') === 'accepted') loadGoogleFonts();
-
-  // ─── COOKIE CONSENT ───
+  // ─── TALLY LAZY LOADER ───
+  // Tally.so script is NOT loaded on page load (DSGVO: no pre-consent third-party connection).
+  // On desktop: script loads only when the user first clicks a form button.
+  // On mobile: existing handler below redirects directly to tally.so/r/... (no script needed).
   (function() {
-    var banner = document.getElementById('cookieBanner');
-    if (!banner) return;
-    // Already decided — keep hidden (display:none is the CSS default)
-    if (localStorage.getItem('cookieConsent')) return;
-    // Animate in: unmask first so transition has a start state
-    setTimeout(function() {
-      banner.style.display = 'flex';
-      void banner.offsetWidth; // force reflow so transition fires
-      banner.classList.add('visible');
-    }, 700);
-    function dismissBanner(val) {
-      localStorage.setItem('cookieConsent', val);
-      if (val === 'accepted') loadGoogleFonts();
-      // Immediately hide via inline style — overrides all CSS, works on all mobile browsers
-      banner.style.display = 'none';
-      banner.classList.remove('visible');
-    }
-    document.getElementById('cookieAccept').addEventListener('click', function() { dismissBanner('accepted'); });
-    document.getElementById('cookieDecline').addEventListener('click', function() { dismissBanner('declined'); });
+    var tallyReady = false;
+    document.addEventListener('click', function(e) {
+      if (window.innerWidth < 768) return; // mobile redirect handler takes over
+      var el = e.target.closest('[data-tally-open]');
+      if (!el) return;
+      if (tallyReady) return; // already loaded — Tally handles natively
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      var s = document.createElement('script');
+      s.src = 'https://tally.so/widgets/embed.js';
+      s.onload = function() {
+        tallyReady = true;
+        setTimeout(function() {
+          if (window.Tally) {
+            window.Tally.openPopup(
+              el.getAttribute('data-tally-open'),
+              { layout: el.getAttribute('data-tally-layout') || 'modal',
+                width: parseInt(el.getAttribute('data-tally-width') || 700),
+                overlay: 1 }
+            );
+          }
+        }, 80);
+      };
+      document.head.appendChild(s);
+    }, true);
   })();
-
-  // Cookie-Einstellungen-Button: Einwilligung zurücksetzen und Banner wieder anzeigen
-  var cookieSettingsBtn = document.getElementById('cookieSettingsBtn');
-  if (cookieSettingsBtn) {
-    cookieSettingsBtn.addEventListener('click', function() {
-      localStorage.removeItem('cookieConsent');
-      var banner = document.getElementById('cookieBanner');
-      if (banner) {
-        banner.style.display = 'flex';
-        void banner.offsetWidth;
-        banner.classList.add('visible');
-      }
-    });
-  }
 
   // ─── REVIEWS CAROUSEL (rAF scroll, desktop + mobile) ───
   (function() {
