@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://fertighaus-badstieber.de/sitemap.xml
