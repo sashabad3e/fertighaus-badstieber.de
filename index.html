@@ -892,6 +892,174 @@
     .faq-aside-phone:hover{color:var(--gold-dk);}
     .faq-aside-phone:focus-visible{outline:1px solid var(--gold);outline-offset:2px;border-radius:2px;}
 
+    /* ─── LEAD MAGNET ─── */
+    .lead-bg{
+      background:var(--dark);
+      position:relative;overflow:hidden;
+      padding:100px 40px;
+    }
+    .lead-glow1{
+      position:absolute;top:-160px;left:-100px;
+      width:560px;height:560px;
+      background:radial-gradient(circle,rgba(255,194,0,0.08) 0%,transparent 60%);
+      pointer-events:none;
+    }
+    .lead-glow2{
+      position:absolute;bottom:-120px;right:-80px;
+      width:440px;height:440px;
+      background:radial-gradient(circle,rgba(255,194,0,0.05) 0%,transparent 65%);
+      pointer-events:none;
+    }
+    .lead-inner{max-width:1360px;margin:0 auto;position:relative;z-index:2;}
+    .lead-grid{
+      display:grid;grid-template-columns:1fr 520px;
+      gap:80px;align-items:center;
+    }
+    .lead-eyebrow{color:var(--gold);}
+    .lead-eyebrow::before{background:var(--gold);}
+    .lead-title{color:var(--white);margin-bottom:16px;}
+    .lead-title em{color:var(--gold);font-style:italic;}
+    .lead-sub{font-size:16px;color:rgba(255,255,255,0.45);line-height:1.75;margin-bottom:36px;}
+    .lead-perks{list-style:none;display:flex;flex-direction:column;gap:14px;margin-bottom:40px;}
+    .lead-perk{
+      display:flex;align-items:flex-start;gap:13px;
+      font-size:14.5px;color:rgba(255,255,255,0.7);line-height:1.5;
+    }
+    .lead-perk-icon{
+      width:24px;height:24px;
+      background:rgba(255,194,0,0.14);
+      border:1px solid rgba(255,194,0,0.25);
+      border-radius:50%;
+      display:flex;align-items:center;justify-content:center;
+      flex-shrink:0;margin-top:1px;
+    }
+    .lead-perk strong{color:var(--white);}
+    .lead-preview{
+      display:flex;align-items:center;gap:14px;
+      padding:16px 20px;
+      background:rgba(255,255,255,0.04);
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:10px;
+    }
+    .lead-preview-icon{
+      width:44px;height:44px;
+      background:rgba(255,194,0,0.12);
+      border:1px solid rgba(255,194,0,0.2);
+      border-radius:8px;
+      display:flex;align-items:center;justify-content:center;
+      flex-shrink:0;
+    }
+    .lead-preview-text{font-size:13px;color:rgba(255,255,255,0.5);line-height:1.5;}
+    .lead-preview-text strong{display:block;font-size:13.5px;color:rgba(255,255,255,0.8);font-weight:700;margin-bottom:2px;}
+
+    /* Lead Form Card */
+    .lead-form-card{
+      background:var(--white);
+      border-radius:20px;padding:44px;
+      box-shadow:0 16px 64px rgba(0,0,0,0.28),0 4px 16px rgba(0,0,0,0.12);
+    }
+    .lead-form-card h3{
+      font-family:'DM Serif Display',serif;
+      font-size:24px;color:var(--black);
+      letter-spacing:-0.02em;margin-bottom:6px;
+    }
+    .lead-form-card .lead-form-sub{
+      font-size:13px;color:var(--mid);margin-bottom:28px;line-height:1.5;
+    }
+    .lead-field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px;}
+    .lead-field label{
+      font-size:11px;font-weight:800;color:var(--coal);
+      letter-spacing:0.06em;text-transform:uppercase;
+    }
+    .lead-field input{
+      font-family:'Plus Jakarta Sans',sans-serif;
+      font-size:14.5px;color:var(--coal);
+      background:var(--grey);
+      border:1.5px solid transparent;
+      border-radius:8px;padding:12px 15px;
+      outline:none;width:100%;
+      transition:border-color .2s,background .2s,box-shadow .2s;
+    }
+    .lead-field input:focus{
+      background:var(--white);
+      border-color:var(--gold);
+      box-shadow:0 0 0 3.5px rgba(255,194,0,0.14);
+    }
+    .lead-field input.error{border-color:#e53e3e;}
+    .lead-field .field-error{font-size:11.5px;color:#e53e3e;font-weight:600;display:none;}
+    .lead-field input.error + .field-error{display:block;}
+    .lead-honeypot{position:absolute;left:-9999px;opacity:0;pointer-events:none;}
+    .lead-check{
+      display:flex;align-items:flex-start;gap:10px;
+      margin-top:4px;margin-bottom:20px;
+    }
+    .lead-check input[type=checkbox]{
+      width:17px;height:17px;margin-top:2px;flex-shrink:0;
+      accent-color:var(--gold);cursor:pointer;
+    }
+    .lead-check label{
+      font-size:12px;color:var(--mid);cursor:pointer;line-height:1.65;
+    }
+    .lead-check a{color:var(--gold-dk);text-decoration:underline;}
+    .lead-check.error label{color:#e53e3e;}
+    .lead-submit-btn{
+      width:100%;justify-content:center;font-size:15px;padding:16px;
+      display:flex;align-items:center;gap:9px;
+      background:var(--gold);color:var(--black);
+      font-family:'Plus Jakarta Sans',sans-serif;
+      font-weight:800;border:none;border-radius:8px;cursor:pointer;
+      box-shadow:0 3px 16px rgba(255,194,0,0.4),0 1px 3px rgba(255,194,0,0.2);
+      transition:background .2s,transform .15s,box-shadow .2s;
+    }
+    .lead-submit-btn:hover{background:var(--gold-dk);transform:translateY(-2px);box-shadow:0 8px 28px rgba(255,194,0,0.5);}
+    .lead-submit-btn:active{transform:translateY(0);}
+    .lead-submit-btn:focus-visible{outline:2px solid var(--black);outline-offset:3px;}
+    .lead-submit-btn:disabled{opacity:0.6;cursor:not-allowed;transform:none;}
+    .lead-privacy-note{
+      font-size:11px;color:var(--muted);text-align:center;
+      margin-top:12px;line-height:1.5;
+    }
+
+    /* Success state */
+    .lead-success{
+      display:none;
+      flex-direction:column;align-items:center;text-align:center;
+      padding:20px 0;gap:16px;
+    }
+    .lead-success-icon{
+      width:64px;height:64px;
+      background:rgba(34,197,94,0.12);
+      border:2px solid rgba(34,197,94,0.3);
+      border-radius:50%;
+      display:flex;align-items:center;justify-content:center;
+    }
+    .lead-success h4{
+      font-family:'DM Serif Display',serif;
+      font-size:22px;color:var(--black);
+      letter-spacing:-0.02em;margin-bottom:4px;
+    }
+    .lead-success p{font-size:14px;color:var(--mid);line-height:1.65;max-width:280px;}
+    .lead-success-dl{
+      display:inline-flex;align-items:center;gap:8px;
+      background:var(--gold);color:var(--black);
+      font-family:'Plus Jakarta Sans',sans-serif;
+      font-weight:800;font-size:13.5px;
+      padding:13px 24px;border-radius:7px;
+      text-decoration:none;
+      box-shadow:0 3px 16px rgba(255,194,0,0.4);
+      transition:background .2s,transform .15s;
+    }
+    .lead-success-dl:hover{background:var(--gold-dk);transform:translateY(-1px);}
+
+    @media(max-width:1100px){
+      .lead-grid{grid-template-columns:1fr;gap:48px;}
+      .lead-bg{padding:72px 40px;}
+    }
+    @media(max-width:600px){
+      .lead-bg{padding:56px 20px;}
+      .lead-form-card{padding:28px 24px;}
+    }
+
     /* ─── CONTACT ─── */
     .contact-grid{display:grid;grid-template-columns:520px 1fr;gap:80px;align-items:start;}
     .form-card{
@@ -1703,6 +1871,7 @@
       <li><a href="#ki-visualisierung">KI-Visualisierung</a></li>
       <li><a href="#einblicke">Einblicke</a></li>
       <li><a href="#regionen">Regionen</a></li>
+      <li><a href="#checkliste">Checkliste</a></li>
       <li><a href="#faq">FAQ</a></li>
     </ul>
     <a href="#" data-tally-open="Gxb2kO" data-tally-layout="modal" data-tally-width="700" data-tally-overlay="1" class="nav-cta">Beratung anfragen</a>
@@ -2736,6 +2905,121 @@
   </div>
 </section>
 
+<!-- LEAD MAGNET -->
+<section class="lead-bg" id="checkliste">
+  <div class="lead-glow1"></div>
+  <div class="lead-glow2"></div>
+  <div class="lead-inner">
+    <div class="lead-grid">
+
+      <!-- Left: Text + Perks -->
+      <div class="lead-left reveal">
+        <span class="eyebrow lead-eyebrow">Kostenloser Ratgeber</span>
+        <h2 class="section-title lead-title">Die <em>10 teuersten Fehler</em><br/>beim Hausbau – und wie Sie sie vermeiden</h2>
+        <p class="lead-sub">Viele Bauherren verlieren unnötig Zehntausende Euro durch vermeidbare Fehler. Diese Checkliste zeigt Ihnen, worauf Sie achten müssen – bevor Sie unterschreiben.</p>
+
+        <ul class="lead-perks">
+          <li class="lead-perk">
+            <span class="lead-perk-icon">
+              <svg width="12" height="12" fill="none" viewBox="0 0 12 12"><path d="M2 6.5L4.8 9.5L10 3" stroke="#FFC200" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span><strong>10 kritische Stolpersteine</strong> – von Budget bis Bauabnahme</span>
+          </li>
+          <li class="lead-perk">
+            <span class="lead-perk-icon">
+              <svg width="12" height="12" fill="none" viewBox="0 0 12 12"><path d="M2 6.5L4.8 9.5L10 3" stroke="#FFC200" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span><strong>Konkrete Tipps</strong> aus 15+ Jahren Fertighausberatung</span>
+          </li>
+          <li class="lead-perk">
+            <span class="lead-perk-icon">
+              <svg width="12" height="12" fill="none" viewBox="0 0 12 12"><path d="M2 6.5L4.8 9.5L10 3" stroke="#FFC200" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span><strong>Sofort als PDF</strong> – kostenlos, kein Spam, jederzeit kündbar</span>
+          </li>
+          <li class="lead-perk">
+            <span class="lead-perk-icon">
+              <svg width="12" height="12" fill="none" viewBox="0 0 12 12"><path d="M2 6.5L4.8 9.5L10 3" stroke="#FFC200" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span>Inkl. <strong>KfW-Fördertipps</strong> und Checkliste für die Abnahme</span>
+          </li>
+        </ul>
+
+        <div class="lead-preview">
+          <div class="lead-preview-icon">
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" stroke="#FFC200" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" stroke="#FFC200" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="lead-preview-text">
+            <strong>Checkliste_Hausbau_Fehler.pdf</strong>
+            2 Seiten · sofort nach Eintragung verfügbar
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Form -->
+      <div class="lead-form-card reveal">
+        <!-- Success State -->
+        <div class="lead-success" id="leadSuccess">
+          <div class="lead-success-icon">
+            <svg width="28" height="28" fill="none" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke="#22c55e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div>
+            <h4>Vielen Dank!</h4>
+            <p>Ihre Checkliste steht jetzt bereit. Falls der Download nicht startet, klicken Sie den Button:</p>
+          </div>
+          <a class="lead-success-dl" href="/checkliste.pdf" download="Checkliste_Hausbau_Fehler.pdf">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M12 3v13M7 11l5 5 5-5M3 20h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            PDF jetzt herunterladen
+          </a>
+        </div>
+
+        <!-- Form -->
+        <div id="leadFormWrap">
+          <h3>Checkliste kostenlos sichern</h3>
+          <p class="lead-form-sub">Eintragen, sofort herunterladen – keine Verpflichtung.</p>
+
+          <form id="leadForm" novalidate>
+            <!-- Honeypot (für Bots) -->
+            <div class="lead-honeypot" aria-hidden="true">
+              <label for="website_url">Website</label>
+              <input type="text" id="website_url" name="website_url" autocomplete="off" tabindex="-1"/>
+            </div>
+
+            <div class="lead-field">
+              <label for="lead_vorname">Vorname *</label>
+              <input type="text" id="lead_vorname" name="vorname" placeholder="z. B. Anna" autocomplete="given-name" required/>
+              <span class="field-error">Bitte geben Sie Ihren Vornamen ein.</span>
+            </div>
+
+            <div class="lead-field">
+              <label for="lead_email">E-Mail-Adresse *</label>
+              <input type="email" id="lead_email" name="email" placeholder="ihre@email.de" autocomplete="email" required/>
+              <span class="field-error">Bitte geben Sie eine gültige E-Mail-Adresse ein.</span>
+            </div>
+
+            <div class="lead-field">
+              <label for="lead_telefon">Telefon <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--muted)">(optional)</span></label>
+              <input type="tel" id="lead_telefon" name="telefon" placeholder="+49 160 …" autocomplete="tel"/>
+            </div>
+
+            <div class="lead-check" id="leadDsgvoWrap">
+              <input type="checkbox" id="lead_dsgvo" name="dsgvo" required/>
+              <label for="lead_dsgvo">Ich bin einverstanden, dass Thomas Badstieber mich zur Fertighausberatung kontaktieren darf. Hinweis: Die Einwilligung ist freiwillig und kann jederzeit widerrufen werden. Weitere Informationen finden Sie in der <a href="#datenschutz">Datenschutzerklärung</a>.</label>
+            </div>
+
+            <button type="submit" class="lead-submit-btn" id="leadSubmitBtn">
+              <svg width="17" height="17" fill="none" viewBox="0 0 24 24"><path d="M12 3v13M7 11l5 5 5-5M3 20h18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Jetzt kostenlos herunterladen
+            </button>
+            <p class="lead-privacy-note">🔒 Ihre Daten sind sicher. Kein Spam, jederzeit abmeldbar.</p>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- FAQ -->
 <section class="section faq-bg" id="faq">
   <div class="section-inner">
@@ -3327,6 +3611,84 @@
   } else {
     window.addEventListener('load', init);
   }
+})();
+</script>
+
+<script>
+/* ── LEAD MAGNET FORM ── */
+(function(){
+  const form     = document.getElementById('leadForm');
+  const wrap     = document.getElementById('leadFormWrap');
+  const success  = document.getElementById('leadSuccess');
+  const btn      = document.getElementById('leadSubmitBtn');
+  const dsgvoRow = document.getElementById('leadDsgvoWrap');
+  if(!form) return;
+
+  function validateEmail(v){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);}
+
+  function setError(input, show){
+    if(show){ input.classList.add('error'); }
+    else    { input.classList.remove('error'); }
+  }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+
+    const honeypot = form.querySelector('input[name="website_url"]');
+    const vorname  = document.getElementById('lead_vorname');
+    const email    = document.getElementById('lead_email');
+    const dsgvo    = document.getElementById('lead_dsgvo');
+
+    // Honeypot check – silent drop if bot filled it
+    if(honeypot && honeypot.value.trim() !== '') return;
+
+    let valid = true;
+
+    if(!vorname.value.trim()){ setError(vorname, true); valid = false; }
+    else setError(vorname, false);
+
+    if(!validateEmail(email.value.trim())){ setError(email, true); valid = false; }
+    else setError(email, false);
+
+    if(!dsgvo.checked){
+      dsgvoRow.classList.add('error'); valid = false;
+    } else {
+      dsgvoRow.classList.remove('error');
+    }
+
+    if(!valid) return;
+
+    // Disable button while "processing"
+    btn.disabled = true;
+    btn.textContent = 'Wird vorbereitet…';
+
+    // Trigger PDF download immediately
+    const dl = document.createElement('a');
+    dl.href     = '/checkliste.pdf';
+    dl.download = 'Checkliste_Hausbau_Fehler.pdf';
+    dl.style.display = 'none';
+    document.body.appendChild(dl);
+    dl.click();
+    document.body.removeChild(dl);
+
+    // Show success state (short delay for UX)
+    setTimeout(function(){
+      wrap.style.display    = 'none';
+      success.style.display = 'flex';
+    }, 400);
+
+    // In Teil B: hier wird fetch('/api/leads', {...}) ergänzt
+  });
+
+  // Live-Validierung: Fehler wegräumen sobald Nutzer tippt
+  ['lead_vorname','lead_email'].forEach(function(id){
+    var el = document.getElementById(id);
+    if(el) el.addEventListener('input', function(){ setError(el, false); });
+  });
+  var dsgvoEl = document.getElementById('lead_dsgvo');
+  if(dsgvoEl) dsgvoEl.addEventListener('change', function(){
+    if(dsgvoEl.checked) dsgvoRow.classList.remove('error');
+  });
 })();
 </script>
 </body>
