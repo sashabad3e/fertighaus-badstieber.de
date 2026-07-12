@@ -1035,8 +1035,18 @@
     .foot-bottom-links{display:flex;gap:24px;}
 
     /* ─── REVEAL ─── */
-    .reveal{opacity:0;transform:translateY(20px);transition:opacity .65s cubic-bezier(.22,1,.36,1),transform .65s cubic-bezier(.22,1,.36,1);}
+    .reveal{
+      opacity:0;
+      transform:translateY(28px);
+      transition:
+        opacity 800ms cubic-bezier(0.16,1,0.3,1),
+        transform 800ms cubic-bezier(0.16,1,0.3,1);
+      will-change:opacity,transform;
+    }
     .reveal.visible{opacity:1;transform:translateY(0);}
+    .reveal-delay-1{transition-delay:120ms;}
+    .reveal-delay-2{transition-delay:240ms;}
+    .reveal-delay-3{transition-delay:360ms;}
 
     /* ─── SCROLL OFFSET FOR STICKY NAV ─── */
     #leistungen,#ki-visualisierung,#ueber-mich,#ablauf,#einblicke,#regionen,#faq,#kontakt{
@@ -1399,7 +1409,14 @@
     .ai-img-item{cursor:pointer;}
     /* ─── REDUCED MOTION ─── */
     @media(prefers-reduced-motion:reduce){
-      .reveal{transition:none;}
+      html{scroll-behavior:auto;}
+      .reveal{
+        opacity:1!important;
+        transform:none!important;
+        transition:none!important;
+        will-change:auto!important;
+      }
+      .reviews-track{animation:none!important;}
       .einblicke-track{animation:none!important;}
     }
 
@@ -1731,6 +1748,7 @@
       .faq-icon::after{height:10px;}
     }
   </style>
+  <noscript><style>.reveal{opacity:1!important;transform:none!important;}</style></noscript>
 </head>
 <body>
 
@@ -2986,7 +3004,7 @@
 <!-- FOOTER -->
 <footer id="footer">
   <div class="foot-inner">
-    <div class="foot-brand">
+    <div class="foot-brand reveal">
       <img src="website_assets/wolf-logo.webp" alt="WOLF-Haus Logo" class="logo-img" />
       <div class="foot-social">
         <a href="https://wa.me/491712109109" target="_blank" rel="noopener noreferrer" class="soc-btn" aria-label="WhatsApp">
@@ -3000,7 +3018,7 @@
         </a>
       </div>
     </div>
-    <div class="foot-col">
+    <div class="foot-col reveal reveal-delay-1">
       <h4>Navigation</h4>
       <ul>
         <li><a href="#ueber-mich">Über mich</a></li>
@@ -3012,7 +3030,7 @@
         <li><a href="#kontakt">Kontakt</a></li>
       </ul>
     </div>
-    <div class="foot-col">
+    <div class="foot-col reveal reveal-delay-2">
       <h4>Kontakt</h4>
       <ul>
         <li><a href="tel:+491712109109">0171 2109109</a></li>
@@ -3020,7 +3038,7 @@
         <li><a href="https://www.google.com/search?q=thomas+badstieber&si=AL3DRZEsmMGCryMMFSHJ3StBhOdZ2-6yYkXd_doETEE1OR-qOWLaw40GWORtPBka3KPxpQYyaMsChe3CwS5r08gIiYg65784Mo_iC9XJaGrnU5u3-7BP9qo%3D" target="_blank" rel="noopener noreferrer">Google Business Profil</a></li>
       </ul>
     </div>
-    <div class="foot-col">
+    <div class="foot-col reveal reveal-delay-3">
       <h4>Rechtliches</h4>
       <ul>
         <li><a href="impressum.html">Impressum</a></li>
@@ -3068,11 +3086,11 @@
   const ro = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
       if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('visible'), i * 55);
+        setTimeout(() => entry.target.classList.add('visible'), i * 60);
         ro.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.07 });
+  }, { threshold: 0.12, rootMargin: '0px 0px -80px 0px' });
   document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
 
   // ─── LIGHTBOX ───
@@ -3186,7 +3204,11 @@
       requestAnimationFrame(tick);
     }
 
-    /* pause on touch only — no hover pause on desktop so it always runs */
+    /* pause on hover, focus, and touch */
+    carousel.addEventListener('mouseenter',  function() { paused = true; });
+    carousel.addEventListener('mouseleave',  function() { paused = false; });
+    carousel.addEventListener('focusin',     function() { paused = true; });
+    carousel.addEventListener('focusout',    function() { paused = false; });
     carousel.addEventListener('touchstart', function() { paused = true; }, { passive: true });
     carousel.addEventListener('touchend',   function() {
       setTimeout(function() { paused = false; }, 800);
