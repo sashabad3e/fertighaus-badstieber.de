@@ -4,3 +4,6 @@ www.dressel-immobilien.de_.png
 *.png.tmp
 node_modules/
 package-lock.json
+.env
+.env.local
+.env.*.local
