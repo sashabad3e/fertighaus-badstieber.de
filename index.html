@@ -179,6 +179,7 @@
     }
     .nav-cta:hover{background:var(--gold-dk)!important;transform:translateY(-1px);}
     .nav-cta:active{transform:translateY(0);}
+    .nav-cta:focus-visible{outline:2px solid var(--white);outline-offset:3px;border-radius:6px;}
     .hamburger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:6px;}
     .hamburger span{display:block;width:22px;height:2px;background:rgba(255,255,255,.75);border-radius:2px;transition:transform .25s,opacity .25s;}
     .mob-menu{display:none;flex-direction:column;background:var(--dark);border-top:1px solid rgba(255,255,255,.08);padding:16px 24px 24px;gap:0;}
@@ -1304,6 +1305,7 @@
       display:flex;gap:20px;
       width:max-content;
       will-change:transform;
+      align-items:flex-start;
     }
     .review-card{
       background:var(--offwhite);border-radius:14px;padding:32px;
@@ -1311,6 +1313,7 @@
       position:relative;
       width:360px;flex-shrink:0;
       transition:box-shadow .25s;
+      display:flex;flex-direction:column;
     }
     .review-card:hover{box-shadow:0 8px 32px rgba(17,17,17,.09);}
     .review-stars{display:flex;gap:3px;margin-bottom:14px;}
@@ -1322,6 +1325,7 @@
     .review-author{
       display:flex;align-items:center;gap:12px;
       padding-top:16px;border-top:1px solid rgba(17,17,17,.07);
+      margin-top:auto;
     }
     .review-avatar{
       width:40px;height:40px;border-radius:50%;
@@ -1758,7 +1762,7 @@
 <nav>
   <div class="nav-inner">
     <a href="#" class="nav-brand" aria-label="WOLF-Haus – Thomas Badstieber">
-      <img src="website_assets/wolf-logo.webp" alt="WOLF-Haus Logo" class="nav-brand-img" />
+      <img src="website_assets/wolf-logo.webp" alt="WOLF-Haus Logo" class="nav-brand-img" width="300" height="300" />
       <div class="nav-brand-text">
         <span class="nav-brand-name">Thomas Badstieber</span>
         <span class="nav-brand-sub">WOLF-Haus Fachberater</span>
@@ -1803,7 +1807,7 @@
     </div>
   </div>
   <div class="hero-right anim-image">
-    <img src="website_assets/thomas-badstieber-berater.webp" alt="Thomas Badstieber – WOLF-Haus Fachberater" fetchpriority="high" />
+    <img src="website_assets/thomas-badstieber-berater.webp" alt="Thomas Badstieber – WOLF-Haus Fachberater" fetchpriority="high" width="1400" height="933" />
     <div class="hero-right-overlay"></div>
     <div class="hero-wolf-logo">
       <img src="website_assets/wolf-logo.webp" alt="WOLF-Haus" />
@@ -2965,7 +2969,6 @@
             <span>Ihre Daten werden vertraulich behandelt</span>
           </div>
         </div>
-        <p class="form-note">Ihre Daten werden vertraulich behandelt und nicht an Dritte weitergegeben.</p>
       </div>
       <div class="reveal">
         <span class="eyebrow">Jetzt anfragen</span>
