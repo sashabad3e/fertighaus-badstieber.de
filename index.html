@@ -59,12 +59,21 @@
           "longitude": 11.61858
         },
         "areaServed": ["Nordbayern","Oberfranken","Mittelfranken","Oberpfalz","Bayreuth","Bindlach","Kulmbach","Wunsiedel","Hof","Coburg","Bamberg","Erlangen","Nürnberg","Fürth","Schwabach","Ansbach","Forchheim","Kronach","Lichtenfels","Pegnitz","Plech","Weidenberg","Amberg","Weiden","Regensburg","Neumarkt in der Oberpfalz","Hersbruck","Naila","Münchberg"],
-        "openingHoursSpecification": {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-          "opens": "09:00",
-          "closes": "18:00"
-        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+            "opens": "08:30",
+            "closes": "18:30"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Saturday","Sunday"],
+            "opens": "09:00",
+            "closes": "17:00",
+            "description": "Nach Vereinbarung"
+          }
+        ],
         "aggregateRating": {
           "@type": "AggregateRating",
           "ratingValue": "5.0",
@@ -82,6 +91,7 @@
         "priceRange": "Kostenlose Beratung",
         "employee": { "@id": "https://fertighaus-badstieber.de/#person" },
         "sameAs": [
+          "https://www.wolfhaus.de/fachberater/thomas-badstieber/",
           "https://www.instagram.com/fertighaus_badstieber/",
           "https://www.facebook.com/p/Thomas-Badstieber-WOLF-Haus-61562299202914/"
         ]
@@ -99,6 +109,7 @@
         "email": "thomas.badstieber@wolfsystem.de",
         "knowsAbout": ["Fertighaus","WOLF-Haus","Hausbau","Fertighausberatung","Holzriegelbauweise","Energieeffizienz im Hausbau","Grundrissplanung"],
         "sameAs": [
+          "https://www.wolfhaus.de/fachberater/thomas-badstieber/",
           "https://www.instagram.com/fertighaus_badstieber/",
           "https://www.facebook.com/p/Thomas-Badstieber-WOLF-Haus-61562299202914/"
         ]
